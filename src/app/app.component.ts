@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { HttpClient } from '@angular/common/http';
+import { PokemonService } from './services/pokemon.service';
 
 @Component({
     selector: 'app-root',
@@ -13,4 +14,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
     title = 'PokeShop';
+
+    private _pokemonService = inject(PokemonService);
+
+    public refreshList() {
+        this._pokemonService.fetchPokemon();
+    }
 }

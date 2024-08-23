@@ -13,4 +13,8 @@ export class CatalogComponent {
     private _pokemonService = inject(PokemonService);
 
     public pokemonCatalog = this._pokemonService.pokemonCatalog;
+
+    public loadMorePokemon() {
+        this._pokemonService.loadMorePokemon();
+    }
 }
