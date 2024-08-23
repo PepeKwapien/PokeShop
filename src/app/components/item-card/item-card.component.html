@@ -1,0 +1,13 @@
+@let pokemonValue = pokemon();
+<div class="item-card-container">
+    <div class="item-card-image-container">
+        <img src="{{ pokemonValue.sprite }}" alt="" />
+    </div>
+    <div class="item-card-details-container">
+        <p class="item-card-details-cost">{{ cost() }} $</p>
+        <div class="item-card-details-cost-description">
+            <p class="item-card-details-cost-description-title">{{ pokemonValue.name }}</p>
+            <p class="item-card-details-cost-description-genera">{{ pokemonValue.genera }}</p>
+        </div>
+    </div>
+</div>
