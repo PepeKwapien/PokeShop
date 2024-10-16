@@ -5,19 +5,52 @@ import { PokemonDto } from '../models/pokemon-dto.model';
     providedIn: 'root'
 })
 export class FavoritesService {
-    public _favorites = signal<PokemonDto[]>([]);
+    public favorites = signal<PokemonDto[]>([]);
 
     constructor() {}
 
     addToFavorites(pokemon: PokemonDto) {
-        this._favorites.update((favorites) => favorites.concat(pokemon));
+        this.favorites.update((favorites) => favorites.concat(pokemon));
     }
 
     removeFromFavorites(pokemon: PokemonDto) {
-        this._favorites.update((favorites) => favorites.filter((favorite) => favorite.name !== pokemon.name));
+        this.favorites.update((favorites) => favorites.filter((favorite) => favorite.name !== pokemon.name));
     }
 
     isFavorite(pokemon: PokemonDto) {
-        return this._favorites().some((favorite) => favorite.name === pokemon.name);
+        return this.favorites().some((favorite) => favorite.name === pokemon.name);
+    }
+
+    public toggleFavorite(pokemon: PokemonDto): void {
+        const isFavorite = this.isFavorite(pokemon);
+
+        if (isFavorite) {
+            this.removeFromFavorites(pokemon);
+        } else {
+            this.addToFavorites(pokemon);
+        }
+    }
+
+    public swapPokemons(pokemonAName: string, pokemonBName: string) {
+        if (pokemonAName === pokemonBName) {
+            return;
+        }
+
+        const findPokemonByName = (pokemonName: string) => (pokemon: PokemonDto) => pokemon.name === pokemonName;
+        const pokemonA = this.favorites().find(findPokemonByName(pokemonAName));
+        const pokemonB = this.favorites().find(findPokemonByName(pokemonBName));
+
+        if (!pokemonA || !pokemonB) {
+            return;
+        }
+
+        const indexA = this.favorites().indexOf(pokemonA);
+        const indexB = this.favorites().indexOf(pokemonB);
+
+        this.favorites.update((favoriteArray) => {
+            favoriteArray[indexA] = pokemonB;
+            favoriteArray[indexB] = pokemonA;
+            return favoriteArray;
+        });
     }
 }

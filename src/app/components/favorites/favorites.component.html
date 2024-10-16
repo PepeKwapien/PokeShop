@@ -1,5 +1,11 @@
-<div class="center-facorites-container">
+<div class="center-facorites-container" (drop)="onDrop($event)" (dragover)="onDragover($event)">
     @for(favorite of favorites(); track favorite.name){
-    <app-favorite-item [pokemon]="favorite"></app-favorite-item>
+    <app-favorite-item
+        draggable="true"
+        (dragstart)="onDragStart($event, favorite)"
+        (dragend)="onDragEnd()"
+        (dragover)="onDragoverFavorite($event, favorite)"
+        [pokemon]="favorite"
+        [ngClass]="{ 'currently-dragged': isCurrentlyDragged(favorite) }"></app-favorite-item>
     }
 </div>

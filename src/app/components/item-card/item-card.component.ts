@@ -21,11 +21,7 @@ export class ItemCardComponent {
         return this._favoritesService.isFavorite(pokemon);
     }
 
-    public toggleFavorites(isFavorite: boolean, pokemon: PokemonDto): void {
-        if (isFavorite) {
-            this._favoritesService.removeFromFavorites(pokemon);
-        } else {
-            this._favoritesService.addToFavorites(pokemon);
-        }
+    public toggleFavorite(pokemon: PokemonDto): void {
+        this._favoritesService.toggleFavorite(pokemon);
     }
 }

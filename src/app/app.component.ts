@@ -19,7 +19,7 @@ export class AppComponent {
     public tab: Tabs = 'main';
 
     private _tabHandlers: Map<Tabs, () => void> = new Map([
-        ['main', this.refreshList],
+        ['main', () => this.refreshList()],
         ['favorites', () => {}]
     ]);
 

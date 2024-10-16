@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, OnInit, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { PokemonDto } from '../models/pokemon-dto.model';
 import { environment } from '../../environments/environment';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, exhaustMap, Observable, Subject, switchMap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BehaviorSubject, exhaustMap, Observable, Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PokemonService {
     private _http = inject(HttpClient);
-    private _fetchPokemon = new BehaviorSubject(0);
-    private _loadMorePokemon = new Subject<number>();
+    private _fetchPokemon = new BehaviorSubject<void>(undefined);
+    private _loadMorePokemon = new Subject<void>();
 
     constructor() {
         this._fetchPokemon
@@ -38,11 +38,11 @@ export class PokemonService {
     public pokemonCatalog = signal<PokemonDto[]>([]);
 
     public fetchPokemon() {
-        this._fetchPokemon.next(0);
+        this._fetchPokemon.next();
     }
 
     public loadMorePokemon() {
-        this._loadMorePokemon.next(0);
+        this._loadMorePokemon.next();
     }
 
     private _getRandomPokemon(): Observable<PokemonDto[]> {

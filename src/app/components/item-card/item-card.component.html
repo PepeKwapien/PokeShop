@@ -5,7 +5,7 @@
         alt="heart"
         class="item-card-favorite-icon"
         [ngClass]="{ 'favorite-marked': isFavoriteValue }"
-        (click)="toggleFavorites(isFavoriteValue, pokemonValue)" />
+        (click)="toggleFavorite(pokemonValue)" />
     <div class="item-card-image-container">
         <img src="{{ pokemonValue.sprite }}" alt="" />
     </div>
