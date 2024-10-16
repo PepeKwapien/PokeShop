@@ -19,7 +19,10 @@ export class PokemonService {
                 exhaustMap(() => this._getRandomPokemon()),
                 takeUntilDestroyed()
             )
-            .subscribe({ next: (catalog) => this.pokemonCatalog.set(catalog), error: (err) => alert(err) });
+            .subscribe({
+                next: (catalog) => this.pokemonCatalog.set(catalog),
+                error: (err) => alert(`Error while getting pokemons. ${err.message}`)
+            });
 
         this._loadMorePokemon
             .pipe(
@@ -28,7 +31,7 @@ export class PokemonService {
             )
             .subscribe({
                 next: (catalog) => this.pokemonCatalog.update((value) => value.concat(catalog)),
-                error: (err) => alert(err)
+                error: (err) => alert(`Error while getting pokemons. ${err.message}`)
             });
     }
 

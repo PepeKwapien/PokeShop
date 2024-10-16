@@ -1,0 +1,13 @@
+.center-facorites-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: center;
+
+    padding: 3rem;
+    width: 100%;
+    & > * {
+        width: 100%;
+        max-width: 1000px;
+    }
+}

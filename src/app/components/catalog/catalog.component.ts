@@ -1,11 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { ItemCardComponent } from '../item-card/item-card.component';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-catalog',
     standalone: true,
-    imports: [ItemCardComponent],
+    imports: [ItemCardComponent, NgIf],
     templateUrl: './catalog.component.html',
     styleUrl: './catalog.component.scss'
 })

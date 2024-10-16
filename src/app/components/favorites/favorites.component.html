@@ -1,0 +1,5 @@
+<div class="center-facorites-container">
+    @for(favorite of favorites(); track favorite.name){
+    <app-favorite-item [pokemon]="favorite"></app-favorite-item>
+    }
+</div>

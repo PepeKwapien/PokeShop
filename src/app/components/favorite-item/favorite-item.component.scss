@@ -1,0 +1,19 @@
+.favorite-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.favorite-pokemon-name {
+    font-size: 1.2rem;
+    font-weight: 1000;
+}
+
+.fake-x-button {
+    font-size: 2rem;
+    font-weight: 1000;
+    cursor: pointer;
+}

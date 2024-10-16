@@ -1,0 +1,8 @@
+@let pokemonValue = pokemon();
+
+<div class="favorite-item-container">
+    <img [src]="pokemonValue.sprite" />
+    <p class="favorite-pokemon-name">{{ pokemonValue.name }}</p>
+    <p>{{ cost() }}</p>
+    <p class="fake-x-button">X</p>
+</div>

@@ -1,11 +1,13 @@
+@let pokemonCatalogValue = pokemonCatalog();
+
 <div class="center-catalog-container">
     <h1 class="catalog-title">Welcome to PokeShop</h1>
     <p class="catalog-description">You get to buy, I get to study Angular Signals</p>
     <div class="catalog-container">
-        @for(pokemon of pokemonCatalog(); track pokemon.name){
+        @for(pokemon of pokemonCatalogValue; track pokemon.name){
         <app-item-card [pokemon]="pokemon"></app-item-card>
         }
     </div>
 
-    <button class="catalog-load-more-button" (click)="loadMorePokemon()">Load more</button>
+    <button class="catalog-load-more-button" *ngIf="pokemonCatalogValue.length > 0" (click)="loadMorePokemon()">Load more</button>
 </div>
