@@ -12,6 +12,10 @@
     }
 }
 
+.draggable {
+    cursor: move;
+}
+
 .currently-dragged {
     opacity: 0.2;
 }

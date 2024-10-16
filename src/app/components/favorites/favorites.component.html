@@ -6,6 +6,7 @@
         (dragend)="onDragEnd()"
         (dragover)="onDragoverFavorite($event, favorite)"
         [pokemon]="favorite"
-        [ngClass]="{ 'currently-dragged': isCurrentlyDragged(favorite) }"></app-favorite-item>
+        [ngClass]="{ 'currently-dragged': isCurrentlyDragged(favorite) }"
+        class="draggable"></app-favorite-item>
     }
 </div>
