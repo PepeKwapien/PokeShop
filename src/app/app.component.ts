@@ -24,21 +24,21 @@ interface TabProperties {
         trigger('slideMain', [
             transition(':leave', [
                 style({ transform: 'translateX(0)' }),
-                animate('300ms', style({ transform: 'translateX(-100%)' }))
+                animate('300ms ease-in', style({ transform: 'translateX(-100%)' }))
             ]),
             transition(':enter', [
                 style({ transform: 'translateX(-100%)' }),
-                animate('300ms', style({ transform: 'translateX(0)' }))
+                animate('400ms ease-out', style({ transform: 'translateX(0)' }))
             ])
         ]),
         trigger('slideFavorites', [
             transition(':leave', [
                 style({ transform: 'translateX(0)' }),
-                animate('300ms', style({ transform: 'translateX(100%)' }))
+                animate('300ms ease-in', style({ transform: 'translateX(100%)' }))
             ]),
             transition(':enter', [
                 style({ transform: 'translateX(100%)' }),
-                animate('300ms', style({ transform: 'translateX(0)' }))
+                animate('400ms ease-out', style({ transform: 'translateX(0)' }))
             ])
         ])
     ],
