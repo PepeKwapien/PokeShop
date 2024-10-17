@@ -1,11 +1,12 @@
 <nav class="navbar">
-    <button class="bold-text" (click)="navigate('main')">{{ title }}</button>
-    <button (click)="navigate('favorites')">Favorites</button>
+    <button class="bold-text" (click)="navigate('main')" [ngClass]="{ 'inactive-tab': !isTabActive('main') }">{{ title }}</button>
+    <button (click)="navigate('favorites')" [ngClass]="{ 'inactive-tab': !isTabActive('favorites') }">Favorites</button>
 </nav>
-<main class="main">
-    @if (tab === 'main'){
-    <app-catalog></app-catalog>
-    } @else if(tab === 'favorites'){
-    <app-favorites></app-favorites>
-    }
+<main class="main" @parent>
+    <div *ngIf="tab === 'main'" [@slideMain]>
+        <app-catalog></app-catalog>
+    </div>
+    <div *ngIf="tab === 'favorites'" [@slideFavorites]>
+        <app-favorites></app-favorites>
+    </div>
 </main>

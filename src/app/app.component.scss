@@ -1,0 +1,13 @@
+.inactive-tab {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.main {
+    position: relative;
+
+    & > div {
+        position: absolute;
+        width: 100%;
+    }
+}
